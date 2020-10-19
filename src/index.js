@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import 'materialize-css/dist/css/materialize.min.css'
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from "redux";
-import * as serviceWorker from './serviceWorker';
+import reduxThunk from 'redux-thunk'
 
-const store = createStore(() => [], {}, applyMiddleware());
+import reducers from './reducers';
+import App from './App';
+
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,4 +17,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
+/*console.log('STRIPE', process.env.REACT_APP_STRIPE_KEY);
+console.log('STRIPE', process.env.NODE_ENV);*/
