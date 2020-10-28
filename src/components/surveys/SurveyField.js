@@ -1,9 +1,11 @@
 import React from 'react';
 
-const SurveyField = () => {
+const SurveyField = ({input, label, meta: { error, touched}}) => {
   return (
     <div>
-      <input />
+      <label>{label}</label>
+      <input {...input} style={{ marginBottom: '5px'}}/>
+      <div className="red-text" style={{ marginBottom: '20px'}}>{touched && error}</div>
     </div>
   );
 };
